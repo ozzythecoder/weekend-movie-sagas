@@ -10,6 +10,16 @@ export default function MovieDetails() {
   console.log(movie);
 
   return (
-    <div>Hey {movie.title}</div>
+    <div>
+      <h2>{movie.title}</h2>
+      
+      <div>
+        <img src={movie.poster} />
+      </div>
+      <p>
+        {movie.description}
+      </p>
+      <a href='/'>Back to List</a>
+    </div>
   )
 }

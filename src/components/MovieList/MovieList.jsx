@@ -15,12 +15,13 @@ function MovieList() {
       <h1>MovieList</h1>
       <section className="movies">
         {movies.map((movie) => {
-          return (<a href={"/#/details/" + movie.id}>
-            <div key={movie.id}>
-              <h3>{movie.title}</h3>
-              <img src={movie.poster} alt={movie.title} />
-            </div>
-          </a>
+          return (
+            <a href={"/#/details/" + movie.id} key={movie.id}>
+              <div>
+                <h3>{movie.title}</h3>
+                <img src={movie.poster} alt={movie.title} />
+              </div>
+            </a>
           );
         })}
       </section>
