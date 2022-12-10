@@ -4,10 +4,9 @@ import { useSelector } from "react-redux";
 export default function MovieDetails() {
 
   const { id } = useParams();
-
+  
+  // get this movie from the state
   const movie = useSelector(store => store.movies.filter(e => e.id == id)[0])
-
-  console.log(movie);
 
   return (
     <div>
