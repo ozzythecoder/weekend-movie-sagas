@@ -5,6 +5,9 @@ export default function MovieForm() {
 
   const dispatch = useDispatch();
 
+  const [ titleIn, setTitle ] = useState('')
+  const [ posterUrlIn, setPosterUrl ] = useState('')
+  const [ descriptionIn, setDescription ] = useState('')
   const [ genreIn, setGenre ] = useState('')
 
   useEffect(() => {
@@ -25,6 +28,17 @@ export default function MovieForm() {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('in handleSubmit')
+
+    const movieObj = {
+      title: titleIn,
+      poster: posterUrlIn,
+      description: descriptionIn
+    }
+
+  }
+
+  const validateInputs = () => {
+
   }
 
 
@@ -38,9 +52,13 @@ export default function MovieForm() {
           Movie Title:
         </label>
         <input
+          type="text"
           className="form-single-input"
           id="movie-title-in"
-          placeholder="Title" />
+          value={titleIn}
+          onChange={e => setTitle(e.target.value)}
+          placeholder="Title"
+          />
 
         <label className="form-label" labelfor="movie-poster-in">
           Movie Poster URL:
@@ -48,6 +66,8 @@ export default function MovieForm() {
         <input
           type="text"
           id="movie-poster-in"
+          value={posterUrlIn}
+          onChange={e => setPosterUrl(e.target.value)}
           className="form-single-input"
           placeholder="Image URL"
           />
@@ -57,8 +77,12 @@ export default function MovieForm() {
           labelfor="movie-description-in" >
           Description:
         </label>
-        <textarea className="form-text-input"
-          placeholder="Type a brief description"></textarea>
+        <textarea
+          id="movie-description-in"
+          value={descriptionIn}
+          onChange={e => setDescription(e.target.value)}
+          placeholder="Type a brief description">
+        </textarea>
         
         <label className="form-label" labelfor="movie-genre-in">
           Genre:
@@ -66,13 +90,18 @@ export default function MovieForm() {
         <select
           className="form-select"
           value={genreIn}
-          onChange={e => setGenre(e.target.value)}
-        >
-          <option className="disabled-option" value={''} disabled>Select a genre:</option>
+          onChange={e => setGenre(e.target.value)}>
+          <option
+            value={''}
+            disabled>
+              Select a genre:
+          </option>
           {genreOptions}
         </select>
         
-        <div></div>
+        <div>
+          {/* Dummy cell */}
+        </div>
         
         <button className="form-submit-btn" type="submit">
           Add Movie

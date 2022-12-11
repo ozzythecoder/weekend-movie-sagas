@@ -31,7 +31,7 @@
   padding: 7px;
 }
 
-.form-text-input {
+#movie-description-in {
   resize: none;
   min-height: 4em;
   font-family: inherit;
