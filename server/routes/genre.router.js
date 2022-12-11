@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 router.get('/:movieId', (req, res) => {
 
   const queryText = `
-  SELECT genres.name FROM genres
+  SELECT * FROM genres
 	  JOIN movies_genres ON movies_genres.genre_id = genres.id
 	  WHERE movies_genres.movie_id = $1;
   `

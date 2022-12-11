@@ -18,7 +18,7 @@ export default function MovieForm() {
   const genres = useSelector((store) => store.genres);
 
   const genreOptions = genres.map((genre, index) => {
-    return <option key={index}>{genre.name}</option>;
+    return <option key={index} value={genre.id}>{genre.name}</option>;
   });
 
   const handleSubmit = (evt) => {
@@ -29,9 +29,13 @@ export default function MovieForm() {
       title: titleIn,
       poster: posterUrlIn,
       description: descriptionIn,
+      genre_id: Number(genreIn)
     };
 
     if (!validateInputs(movieObj)) return false;
+
+    console.log('adding movie to DB:', movieObj)
+
   };
 
   const validateInputs = (movieObj) => {
@@ -75,7 +79,7 @@ export default function MovieForm() {
           />
 
           <label className="form-label" labelfor="movie-poster-in">
-            Movie Poster URL:
+            Movie Poster:
           </label>
           <input
             type="text"
