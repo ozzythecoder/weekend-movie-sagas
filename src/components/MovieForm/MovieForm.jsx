@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function MovieForm() {
 
   const dispatch = useDispatch();
+
+  const [ genreIn, setGenre ] = useState('')
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GENRES' })
@@ -54,14 +56,19 @@ export default function MovieForm() {
         <label className="form-label" labelfor="movie-genre-in">
           Genre:
         </label>
-        <select className="form-select">
+        <select
+          className="form-select"
+          value={genreIn}
+          onChange={e => setGenre(e.target.value)}
+        >
+          <option className="disabled-option" value={''} disabled>Select a genre:</option>
           {genreOptions}
         </select>
         
         <div></div>
         
-        <button className="" type="submit">
-          Submit
+        <button className="form-submit-btn" type="submit">
+          Add Movie
         </button>
       </form>
     </div>
