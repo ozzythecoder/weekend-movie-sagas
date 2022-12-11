@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.nav-flex {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-flex p {
+  padding: 0 10px;
+}
+
 .page-form {
   display: flex;
   flex-direction: column;

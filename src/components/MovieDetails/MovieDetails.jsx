@@ -27,7 +27,7 @@ export default function MovieDetails() {
                 <img src={movie.poster} />
               </div>
               <p>{movie.description}</p>
-              <a href="/">Back to List</a>
+              <a href="/#/">Back to List</a>
             </div>
           );
         })}
