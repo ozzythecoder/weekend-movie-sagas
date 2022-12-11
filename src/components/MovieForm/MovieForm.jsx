@@ -1,4 +1,26 @@
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 export default function MovieForm() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_GENRES' })
+  }, [])
+
+  const genres = useSelector(store => store.genres)
+
+  
+  const genreOptions = genres.map((genre, index) => {
+    return (
+      <option key={index}>
+        {genre.name}
+      </option>
+    )
+  })
+
+
   return (
     <div>
       <form className="page-form">
@@ -33,8 +55,7 @@ export default function MovieForm() {
           Genre:
         </label>
         <select className="form-select">
-          <option>Test</option>
-          <option>Test 2</option>
+          {genreOptions}
         </select>
         
         <div></div>
