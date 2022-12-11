@@ -34,11 +34,23 @@ export default function MovieForm() {
       poster: posterUrlIn,
       description: descriptionIn
     }
+    
+    if (!validateInputs(movieObj)) return false;
+
 
   }
 
-  const validateInputs = () => {
+  const validateInputs = (movieObj) => {
+    
+    if (Object.values(movieObj).some(e => e == '')) {
+      alert('All text inputs are required.')
+      return false;
+    } else if (genreIn == '') {
+      alert('Please select a genre.')
+      return false;
+    }
 
+    return true;
   }
 
 
