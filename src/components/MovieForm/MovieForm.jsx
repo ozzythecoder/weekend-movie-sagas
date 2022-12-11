@@ -58,7 +58,7 @@ export default function MovieForm() {
   }
 
   return (
-    <div>
+    <div className="content-card">
       <form>
         <div className="page-form">
           <label className="form-label" labelfor="movie-title-in">

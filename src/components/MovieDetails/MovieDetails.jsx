@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 
+import './MovieDetails.css'
+
 export default function MovieDetails() {
   const dispatch = useDispatch();
 
@@ -29,7 +31,7 @@ export default function MovieDetails() {
         .map((movie, index) => {
           return (
             <div
-              className="movie-card"
+              className="content-card"
               key={index}>
               <h2>{movie.title}</h2>
               <h3>{genres.join(', ')}</h3>
