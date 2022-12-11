@@ -1,15 +1,14 @@
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 export default function MovieDetails() {
-
   const dispatch = useDispatch();
 
   const { id } = useParams();
 
-  // get this movie from the state
-  const movie = useSelector(store => store.movies.filter(e => e.id == id)[0])
+  // get list of movies from the state
+  const movieList = useSelector((store) => store.movies);
 
   useEffect(() => {
     dispatch({ type: "FETCH_MOVIES" });
@@ -17,15 +16,21 @@ export default function MovieDetails() {
 
   return (
     <div>
-      <h2>{movie.title}</h2>
-      
-      <div>
-        <img src={movie.poster} />
-      </div>
-      <p>
-        {movie.description}
-      </p>
-      <a href='/'>Back to List</a>
+      {movieList
+        .filter((e) => e.id == id)
+        .map((movie, index) => {
+          return (
+            <div key={index}>
+              <h2>{movie.title}</h2>
+
+              <div>
+                <img src={movie.poster} />
+              </div>
+              <p>{movie.description}</p>
+              <a href="/">Back to List</a>
+            </div>
+          );
+        })}
     </div>
-  )
+  );
 }
