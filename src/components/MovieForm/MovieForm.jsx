@@ -4,7 +4,7 @@ export default function MovieForm() {
 
   return (
     <div>
-      <form>
+      <form className="page-form">
         <input />
         <input />
         <textarea>
@@ -13,6 +13,9 @@ export default function MovieForm() {
         <select>
 
         </select>
+        <button>
+          Submit
+        </button>
       </form>
     </div>
   )

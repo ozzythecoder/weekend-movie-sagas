@@ -2,6 +2,7 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import MovieList from '../MovieList/MovieList'
 import MovieDetails from '../MovieDetails/MovieDetails';
+import MovieForm from '../MovieForm/MovieForm';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route exact path="/details/:id" children={<MovieDetails />} />
 
         {/* Add Movie page */}
-        <Route exact path="/movie" />
+        <Route exact path="/addMovie" children={<MovieForm />} />
       </Router>
     </div>
   );
