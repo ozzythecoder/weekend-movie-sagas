@@ -9,10 +9,19 @@ export default function MovieDetails() {
 
   // get list of movies from the state
   const movieList = useSelector((store) => store.movies);
+  const genreList = useSelector(store => store.thisMovieGenre)
+
+  console.log('genreList', genreList)
 
   useEffect(() => {
     dispatch({ type: "FETCH_MOVIES" });
+    dispatch({ type: 'FETCH_GENRE_BY_MOVIE', payload: id })
   }, []);
+
+  // const genres = genreList.map((genre, index) => {
+  //   return (<>{genre.name}</>)
+  // }).join(', ')
+
 
   return (
     <div>
@@ -22,7 +31,7 @@ export default function MovieDetails() {
           return (
             <div key={index}>
               <h2>{movie.title}</h2>
-              <h3>{movie.genre_id}</h3>
+              <h3>{}</h3>
 
               <div>
                 <img src={movie.poster} />
