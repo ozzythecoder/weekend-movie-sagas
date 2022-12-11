@@ -11,7 +11,9 @@ function MovieList() {
   }, []);
 
   return (
-    <main>
+    <main className="page-card">
+        <h2>All Movies</h2>
+        <h3>Click on any movie to learn more.</h3>
       <section className="movies">
         {movies.map((movie) => {
           return (

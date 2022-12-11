@@ -7,6 +7,7 @@
 
 .App-footer {
   height: 40px;
+  font-size: 12px;
 }
 
 h1 {
@@ -21,6 +22,14 @@ h1 {
 
 .nav-flex p {
   padding: 0 10px;
+}
+
+.page-card {
+  background: white;
+  margin: 0 5%;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 0 0 15px;
 }
 
 .movies {
@@ -126,6 +135,12 @@ button {
 
 @media screen and (min-width: 600px) {
 
+  .App-footer {
+    height: 100px;
+    line-height: 100px;
+    font-size: 14px;
+  }
+
   .content-card {
     margin: 0 20%;
     padding: 0px 30px 30px;
@@ -138,6 +153,10 @@ button {
 
   .movie-card-container {
     margin: 5px;
+  }
+
+  .movies {
+    margin: 0 5%;
   }
 
   .form-label {
