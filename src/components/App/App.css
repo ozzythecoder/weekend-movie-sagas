@@ -23,6 +23,25 @@ h1 {
   padding: 0 10px;
 }
 
+.movies {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.movie-list-card {
+  width: 250px;
+  height: 360px;
+}
+
+.movie-card-title {
+  height: 2em;
+}
+
+.movie-card img {
+  height: 275px;
+}
+
 .content-card {
   margin: 5px;
   padding: 0px 10px 10px;
@@ -110,6 +129,15 @@ button {
   .content-card {
     margin: 0 20%;
     padding: 0px 30px 30px;
+  }
+
+  .content-card.movie-list-card {
+    padding: 10px;
+    margin: 0;
+  }
+
+  .movie-card-container {
+    margin: 5px;
   }
 
   .form-label {
