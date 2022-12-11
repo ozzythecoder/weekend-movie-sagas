@@ -35,8 +35,9 @@ export default function MovieForm() {
     if (!validateInputs(movieObj)) return false;
 
     console.log('adding movie to DB:', movieObj)
-
     dispatch({type: 'ADD_MOVIE', payload: movieObj })
+
+    history.push('/')
   };
 
   const validateInputs = (movieObj) => {

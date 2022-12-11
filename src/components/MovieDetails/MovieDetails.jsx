@@ -13,6 +13,7 @@ export default function MovieDetails() {
   useEffect(() => {
     dispatch({ type: "FETCH_MOVIES" });
     dispatch({ type: "FETCH_GENRE_BY_MOVIE", payload: id })
+    window.scrollTo(0,0)
    }, []);
   
   // get list of movies from the state

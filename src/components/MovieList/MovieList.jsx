@@ -8,6 +8,7 @@ function MovieList() {
 
   useEffect(() => {
     dispatch({ type: "FETCH_MOVIES" });
+    window.scrollTo(0,0)
   }, []);
 
   return (
@@ -19,7 +20,7 @@ function MovieList() {
           return (
             <div className="movie-card-container" key={movie.id}>
               <a href={"/#/details/" + movie.id}>
-                <div className="content-card movie-list-card">
+                <div className="page-sub-card movie-list-card">
                   <h3 className="movie-card-title">{movie.title}</h3>
                   <img className="movie-poster-img" src={movie.poster} alt={movie.title} />
                 </div>
