@@ -22,10 +22,17 @@ export default function MovieForm() {
     )
   })
 
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    console.log('in handleSubmit')
+  }
+
 
   return (
     <div>
-      <form className="page-form">
+      <form
+        className="page-form"
+        onSubmit={handleSubmit}>
         
         <label className="form-label" labelfor="movie-title-in">
           Movie Title:

@@ -40,8 +40,9 @@
 }
 
 .form-select {
-  padding: 5px;
+  padding: 7px;
   font-family: inherit;
+  font-size: inherit;
 }
 
 .form-submit-btn {
