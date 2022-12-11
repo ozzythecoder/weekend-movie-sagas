@@ -36,6 +36,7 @@ export default function MovieForm() {
 
     console.log('adding movie to DB:', movieObj)
 
+    dispatch({type: 'ADD_MOVIE', payload: movieObj })
   };
 
   const validateInputs = (movieObj) => {

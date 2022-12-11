@@ -21,7 +21,7 @@ function MovieList() {
               <a href={"/#/details/" + movie.id}>
                 <div className="content-card movie-list-card">
                   <h3 className="movie-card-title">{movie.title}</h3>
-                  <img src={movie.poster} alt={movie.title} />
+                  <img className="movie-poster-img" src={movie.poster} alt={movie.title} />
                 </div>
               </a>
             </div>
