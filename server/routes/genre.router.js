@@ -18,6 +18,7 @@ router.get('/', (req, res) => {
 // get genre names for a certain movie by movie id
 router.get('/:movieId', (req, res) => {
 
+  // joins junction table, selects for all genres that match on movie ID
   const queryText = `
   SELECT * FROM genres
 	  JOIN movies_genres ON movies_genres.genre_id = genres.id

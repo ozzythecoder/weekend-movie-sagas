@@ -1,17 +1,20 @@
+// React & Redux imports
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App/App.js';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-// Provider allows us to use redux within our react app
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
-// Import saga middleware
+
+// Saga middleware imports
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
-// Create the rootSaga generator function
+// module imports
+import App from './components/App/App.js';
+import './index.css';
+
+// rootSaga generator function
 function* rootSaga() {
   yield takeEvery('FETCH_MOVIES', fetchAllMovies);
   yield takeEvery('FETCH_GENRES', fetchAllGenres);
@@ -19,21 +22,20 @@ function* rootSaga() {
   yield takeEvery('ADD_MOVIE', addMovie)
 }
 
+// get all movies from the DB
 function* fetchAllMovies() {
-  // get all movies from the DB
+
   try {
     const movies = yield axios.get('/api/movie');
-    console.log('get all:', movies.data);
     yield put({ type: 'SET_MOVIES', payload: movies.data });
-
-  } catch {
-    console.log('get all error');
-    console.log('Error getting movie data.');
+  } catch (err) {
+    console.log('Error getting movie data.', err);
+    alert('Error getting movie data.')
   }
 }
 
+// get a list of all genres from DB
 function* fetchAllGenres() {
-
   try {
     const genres = yield axios.get('/api/genre');
     yield put({ type: 'SET_GENRES', payload: genres.data })
@@ -43,8 +45,8 @@ function* fetchAllGenres() {
   }
 }
 
+// get all genres for a particular movie by ID
 function* fetchGenreByMovie(action) {
-
   try {
     const genres = yield axios.get('/api/genre/' + action.payload);
     yield put({ type: 'SET_THIS_GENRES', payload: genres.data })
@@ -54,8 +56,8 @@ function* fetchGenreByMovie(action) {
   }
 }
 
+// add a movie to the DB
 function* addMovie(action) {
-
   try {
     yield axios.post('/api/movie', action.payload)
   } catch (err) {
@@ -67,7 +69,7 @@ function* addMovie(action) {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
-// Used to store movies returned from the server
+// global state, list of all movies
 const movies = (state = [], action) => {
   switch (action.type) {
     case 'SET_MOVIES':
@@ -77,6 +79,7 @@ const movies = (state = [], action) => {
   }
 }
 
+// global state, genres for selected movie
 const thisMovieGenre = (state = [], action) => {
   switch (action.type) {
     case 'SET_THIS_GENRES': return action.payload;
@@ -84,7 +87,7 @@ const thisMovieGenre = (state = [], action) => {
   }
 }
 
-// Used to store the movie genres
+// global state, list of all genres
 const genres = (state = [], action) => {
   switch (action.type) {
     case 'SET_GENRES':
@@ -94,14 +97,13 @@ const genres = (state = [], action) => {
   }
 }
 
-// Create one store that all components can use
+// store and reducer combination
 const storeInstance = createStore(
   combineReducers({
     movies,
     genres,
     thisMovieGenre
   }),
-  // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger),
 );
 
