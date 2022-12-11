@@ -12,8 +12,43 @@
 }
 
 .page-form {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 40%;
+  display: grid;
+  margin: 0 25px;
+  grid-template-rows: 1fr 1fr 1.5fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
+  align-items: center;
+  column-gap: 15px;
+}
+
+.form-label {
+  text-align: left;
+  font-size: 14px;
+}
+
+.form-single-input {
+  height: 1em;
+  padding: 5px;
+}
+
+.form-text-input {
+  resize: none;
+  min-height: 4em;
+  font-family: inherit;
+  padding: 5px;
+}
+
+.form-select {
+  padding: 5px;
+  font-family: inherit;
+}
+
+@media screen and (min-width: 600px) {
+
+  .form-label {
+    font-size: 18px;
+  }
+
+  .page-form {
+    margin: 0 25%;
+  }
 }
