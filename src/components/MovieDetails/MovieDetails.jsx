@@ -22,6 +22,7 @@ export default function MovieDetails() {
           return (
             <div key={index}>
               <h2>{movie.title}</h2>
+              <h3>{movie.genre_id}</h3>
 
               <div>
                 <img src={movie.poster} />
